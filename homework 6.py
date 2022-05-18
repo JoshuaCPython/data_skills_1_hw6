@@ -2,10 +2,10 @@
 # Spring 2022
 # Homework 6
 
-# YOUR NAME HERE
+# Joshua Charles
 
-# YOUR CANVAS NAME HERE
-# YOUR GITHUB USER NAME HERE
+# Joshua Charles
+# JoshuaCPython
 
 # Due date: Sunday May 15th before midnight
 # Write your answers in the space between the questions, and commit/push only
@@ -35,14 +35,50 @@ x = pd.date_range(start='1990/1/1', end='1991/12/1', freq='MS')
 y1 = np.random.normal(10, 2, len(x))
 y2 = [np.sin(v)+10 for v in range(len(x))]
 
+# Plotting all three plots in a single plot
+
+plt.plot(x, x, color = 'r', label  = 'x', linestyle = '-')
+plt.plot(len(x), y1, color = 'g', label = 'Scatter Plot', linestyle = '-.')
+plt.plot(range(len(x)), y2, color = 'b', label = 'Line', linestyle = '--')
+
+plt.legend()
+
+plt.show()
+
 # Question 2: Using only Matplotlib, reproduce the figure in this repo named
 # question_2_figure.png.
+
+import matplotlib.pyplot as plt
+
+#create data
+
+x = [0,2,4,6,8,10]
+y = [0,2,4,6,8,10]
+
+# plot lines
+
+plt.plot(x, y, label = 'Blue')
+plt.plot(y, x, label = 'Red')
+
+plt.legend()
+
+plt.show()
 
 # Question 3: Load the mpg.csv file that is in this repo, and create a
 # plot that tests the following hypothesis: a car with an engine that has
 # a higher displacement (i.e. is bigger) will get worse gas mileage than
 # one that has a smaller displacement.  Test the same hypothesis for mpg
 # against horsepower and weight.
+
+firstpath = r'C:\Users\joshu\Downloads\homework-4-and-5-JoshuaCPython-main.zip\homework-4-and-5-JoshuaCPython-main\mpg.csv'
+
+path = os.path.join(firstpath,'mpg.csv')  
+
+normplot(mpg)
+
+sample_means =mean(mpg)
+
+[h, pvalue,ci] = ztest(mpg/)
 
 # Question 4: Continuing from question 3, create a scatter plot with mpg
 # on the y-axis and cylinders on the x-axis.  Explain what is wrong with this
@@ -62,3 +98,10 @@ y2 = [np.sin(v)+10 for v in range(len(x))]
 # Question 7: Using Seaborn, create a scatter plot of mpg versus displacement,
 # while showing dots as different colors depending on the country of origin.
 
+import seaborn as sns
+df = sns.load_dataset('iris')
+
+fig, ax = plt.subplots()
+ax = sns.scatterplot(x='sepal_length', y='petal_length',
+                data=df, hue='species', ax=ax)
+fig.savefig('myplot.png')
